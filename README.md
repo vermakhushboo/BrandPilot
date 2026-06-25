@@ -1,27 +1,57 @@
 # BrandPilot
 
-> **From brand DM to published campaign — fully autonomous.** A brand reaches out — BrandPilot qualifies the deal, prices it, negotiates, collects payment, writes the content, schedules it, gets brand sign-off, and marks it ready to post. All on autopilot, with a human-readable log of every decision.
+### Brand deals. Zero effort.
+
+> **From brand DM to published campaign — fully autonomous.**
+> An AI agent that runs your entire brand collaboration — from inquiry to published post.
+
+🔗 **Live demo:** [brandpilot-9hpukbpg.manus.space](https://brandpilot-9hpukbpg.manus.space/)
 
 ---
 
-## What it does
+## The problem
 
-BrandPilot is an autonomous **deal desk** for a single creator. It takes an inbound brand sponsorship from first message to ready-to-post, running a chain of product agents that each own one step of the pipeline.
+**Creators lose 40+ hours a month on brand ops.**
 
-The control room is a single screen:
+A single sponsorship is death by a thousand small tasks:
 
-- **Left** — WhatsApp-style brand conversation
-- **Middle** — deal pipeline + content calendar
-- **Right** — live agent log and safety checks
-- **Bottom** — drafts, payment state, and scheduled slots
+- Reading and triaging brand emails
+- Writing drafts back and forth
+- Negotiating rates
+- Chasing invoices and payments
+- Scheduling posts around organic content
+- Tracking it all in spreadsheets
 
-Every agent action writes a visible log entry. Payment and approval gates are hard-stops: no drafts before the advance clears, no ready-to-post before the final payment clears, and nothing is sent to the brand without going through the conversation.
+That's time not spent creating — the one thing the audience actually shows up for.
+
+## The solution
+
+BrandPilot is an **autonomous AI talent manager** that takes a brand deal from first message to ready-to-post, with the creator only stepping in to approve.
+
+| Without BrandPilot | With BrandPilot |
+|--------------------|-----------------|
+| Reading brand emails | Agent reads & responds |
+| Writing drafts back & forth | Ghost-writes in **your** voice |
+| Negotiating rates | Auto-quotes pricing |
+| Chasing payments | Handles PayPal advance + final |
+| Scheduling posts | Creates content & schedules slots |
+| Tracking in spreadsheets | You just approve via notification |
+| **40+ hrs/month wasted** | **~0 hrs — fully autonomous** |
+
+**Autonomous, not unsupervised.** The human stays in control: notified at every milestone, able to review before publish, inject feedback mid-flow, and pause or roll back at will. Hard gates make the autonomy safe — no content before the advance clears, nothing published before final payment and brand approval.
 
 ---
 
-## Agent workflow
+## End-to-end, fully automated
 
-Each agent reads the full deal state from Supabase (deal, creator profile, messages, prior agent runs, payments, drafts, calendar), builds a structured prompt, calls Manus for a strict-JSON result, validates it, persists the run to `agent_runs`, writes any side effects, and advances the deal status.
+From brand inquiry → published post, with zero manual steps in between:
+
+```
+Receive → Qualify → Quote → Negotiate → 💰 Advance → Research
+   → Draft → Safety → Schedule → Brand review → 💰 Final → Publish
+```
+
+Each step is owned by a dedicated agent that reads the full deal state, makes one decision, logs it, and hands off to the next.
 
 | Deal status | Agent | Produces | Next status |
 |-------------|-------|----------|-------------|
@@ -42,6 +72,19 @@ The orchestrator (`lib/agents/engine.ts`) drives this in two modes:
 
 - `runNextAgentStep` — run exactly one agent
 - `runAgentLoopUntilBlocked` — run autonomously until the next gate
+
+---
+
+## What it does
+
+BrandPilot is an autonomous **deal desk** for a single creator. The control room is a single screen:
+
+- **Left** — WhatsApp-style brand conversation
+- **Middle** — deal pipeline + content calendar
+- **Right** — live agent log and safety checks
+- **Bottom** — drafts, payment state, and scheduled slots
+
+Every agent action writes a visible log entry. Payment and approval gates are hard-stops: no drafts before the advance clears, no ready-to-post before the final payment clears, and nothing reaches the brand without going through the conversation.
 
 ---
 
@@ -195,3 +238,7 @@ supabase/
 scripts/
   e2e-test.mjs             full-pipeline API smoke test
 ```
+
+---
+
+<sub>Built with AI · Hackathon 2026 · Made with [Manus](https://manus.im)</sub>
