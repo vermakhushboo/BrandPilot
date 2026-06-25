@@ -1,0 +1,28 @@
+---
+description: BrandPilot hackathon MVP rules
+alwaysApply: true
+---
+
+We are building BrandPilot: from brand DM to published campaign — fully autonomous.
+
+MVP:
+A brand reaches out. BrandPilot checks fit, calculates sponsorship rate, negotiates, asks for 50% advance, verifies payment, researches brand/product/creator tone, drafts X + LinkedIn content, spaces it into the creator's organic calendar, gets brand approval, asks for final payment, verifies payment, then marks ready to post.
+
+Hard constraints:
+- One creator only.
+- One seeded brand deal only.
+- No auth.
+- No real social posting.
+- No multi-user complexity.
+- Every agent action must create a visible log.
+- Payment gates are mandatory.
+- No draft before advance payment.
+- No ready-to-post before final payment.
+- No external message/post without approval.
+- If integrations are missing, use demo adapters.
+
+UI:
+Left: WhatsApp-style brand conversation.
+Middle: deal pipeline and calendar.
+Right: agent log and safety checks.
+Bottom: drafts, payment state, scheduled slots.
